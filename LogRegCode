@@ -1,0 +1,30 @@
+import pandas as pd
+import statsmodels.api as sm
+
+# Load your data
+file_path = r'C:\Users\Roman\Rommel\SBUDA\CopulaRegPosition_PORK145.xlsx'  # Adjust path if needed
+df = pd.read_excel(file_path)
+
+
+# Check the first few rows to verify data is loaded correctly
+print(df.head())
+
+# Ensure the data is numeric (convert if necessary)
+df = df.apply(pd.to_numeric, errors='coerce')  # Convert non-numeric to NaN
+
+# Define the predictors (X) and the target variable (y)
+X = df[['exist','priming']]
+y = df['variant']
+
+# Drop NaN values if they exist
+df.dropna(inplace=True)
+
+# Add a constant (intercept) to the model
+X = sm.add_constant(X)
+
+# Fit the logistic regression model
+model = sm.Logit(y, X)
+result = model.fit()
+
+# Print the summary of the regression results
+print(result.summary())
