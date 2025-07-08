@@ -2,7 +2,7 @@ import pandas as pd
 import statsmodels.api as sm
 
 # Load your data
-file_path = r'C:\Users\Roman\Rommel\SBUDA\CopulaRegPosition_PORK145.xlsx'  # Adjust path if needed
+file_path = r'https://github.com/RomanRonko/Logistic-regression-for-Belarusian-Be.PRS/blob/main/CopulaRegPosition_PORK145.xlsx'  # Adjust path if needed
 df = pd.read_excel(file_path)
 
 
